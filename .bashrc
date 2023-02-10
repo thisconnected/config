@@ -141,7 +141,7 @@ export SUDO_EDITOR='emacsclient -t'
 export VISUAL='emacsclient -c -a emacs'
 alias mapvm='nmap -sn 192.168.122.0/24'
 alias pwsz='ssh pwsz@'
-#alias emacs='emacsclient -c'
+alias emacs='emacsclient -t'
 export XZ_OPT="--threads=0"
 
 # avoid duplicates..
