@@ -235,3 +235,13 @@
  )
 
 
+(setq org-todo-keywords
+      '((sequence "TODO" "ONGOING" "WAITING" "VERIFY" "DONE" )))
+(setq org-todo-keyword-faces
+      '(("WAITING" . org-warning)
+	("TODO" . "cyan")
+	("ONGOING" . "yellow")
+	("VERIFY" . (:foreground "green" :weight bold))))
+
+(provide '.emacs)
+;;; .emacs ends here
