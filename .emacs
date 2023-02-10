@@ -74,6 +74,10 @@
 
 (straight-use-package 'yasnippet)
 
+(straight-use-package 'yasnippet-snippets)
+
+(straight-use-package 'auto-yasnippet)
+
 (straight-use-package 'htmlize)
 
 (straight-use-package 'ctags-update)
@@ -98,10 +102,16 @@
 
 (straight-use-package 'ispell)
 
+(straight-use-package 'jedi)
+
 
 
 ;; (straight-use-package 'org-tempo)
 
+;; python autocomplete via jedi
+
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
 
 ;; custom
 
@@ -110,7 +120,7 @@
 
 ;;(setq default-directory "C:/Documents and Settings/Patryk Kaniewski/")
 
-(require 'helm-config)
+;;(require 'helm-config)
 (helm-mode 1)
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
