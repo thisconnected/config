@@ -104,7 +104,9 @@
 
 (straight-use-package 'jedi)
 
+(straight-use-package 'pyvenv)
 
+(straight-use-package 'markdown-mode)
 
 ;; (straight-use-package 'org-tempo)
 
@@ -234,14 +236,24 @@
  ;; If there is more than one, they won't work right.
  )
 
-
 (setq org-todo-keywords
-      '((sequence "TODO" "ONGOING" "WAITING" "VERIFY" "DONE" )))
+      '((sequence "TODO" "WAITING" "LOWPRIORITY" "ONGOING" "PENDING" "VERIFY" "DONE" )))
 (setq org-todo-keyword-faces
-      '(("WAITING" . org-warning)
-	("TODO" . "cyan")
-	("ONGOING" . "yellow")
+      '(("PENDING" . org-warning)
+	("TODO" . "orange")
+	("ONGOING" . "cyan")
+	("WAITING" . "white")
+	("LOWPRIORITY" . "purple")
 	("VERIFY" . (:foreground "green" :weight bold))))
+
+
+;; globally display numbers
+(global-linum-mode)
+;; show lineendings everywhere
+;; (global-whitespace-newline-mode)
+;; show lineendings with custom sign
+(setq whitespace-display-mappings
+      '((newline-mark 10 [172 10])))
 
 (provide '.emacs)
 ;;; .emacs ends here
