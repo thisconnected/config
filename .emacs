@@ -108,6 +108,13 @@
 
 (straight-use-package 'markdown-mode)
 
+(straight-use-package 'jenkinsfile-mode)
+
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
+
 ;; (straight-use-package 'org-tempo)
 
 ;; python autocomplete via jedi
@@ -257,3 +264,4 @@
 
 (provide '.emacs)
 ;;; .emacs ends here
+(put 'upcase-region 'disabled nil)
