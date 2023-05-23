@@ -110,6 +110,11 @@
 
 (straight-use-package 'jenkinsfile-mode)
 
+(straight-use-package 'exec-path-from-shell)
+
+(when (daemonp)
+  (exec-path-from-shell))
+
 (use-package elpy
   :ensure t
   :init
