@@ -129,10 +129,6 @@
 ;; (straight-use-package 'org-tempo)
 
 
-;; custom
-
-(let ((default-directory  "~/.emacs.d/lisp/"))
-  (normal-top-level-add-subdirs-to-load-path))
 
 ;;(setq default-directory "C:/Documents and Settings/Patryk Kaniewski/")
 
