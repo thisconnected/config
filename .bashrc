@@ -35,6 +35,7 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -56,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-export BASH_USER_COLOR=219
+export BASH_USER_COLOR=7
 export BASH_PATH_COLOR=105
 export BASH_ROOT_COLOR=9
 
@@ -138,10 +139,10 @@ if [ -z $TMUX ]; then
 fi
 export EDITOR='emacsclient -t'
 export SUDO_EDITOR='emacsclient -t'
-export VISUAL='emacsclient -c -a emacs'
+export VISUAL='emacsclient -t -a emacs'
 alias mapvm='nmap -sn 192.168.122.0/24'
 alias pwsz='ssh pwsz@'
-alias emacs='emacsclient -t'
+alias emacs='emacsclient -c'
 export XZ_OPT="--threads=0"
 
 # avoid duplicates..
@@ -155,7 +156,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 export QT_QPA_PLATFORMTHEME='gnome'
 
 # default cmake ninja
-export CMAKE_GENERATOR=Ninja
+# export CMAKE_GENERATOR=Ninja
 alias git-graph="git log --graph --decorate --oneline"
 
 #serenity
@@ -167,11 +168,15 @@ export SERENITY_RAM_SIZE=16G
 #temp fix for vte
 __vte_prompt_command() { true; }
 
-export PATH=/home/thisconnect/.local/bin/:$PATH
-
+export PATH=~/.local/bin:$PATH
 #bash options
 shopt -s autocd
 shopt -s cdspell
 shopt -s direxpand
 shopt -s extglob
 alias config='/usr/bin/git --git-dir=/home/thisconnect/.cfg/ --work-tree=/home/thisconnect'
+
+alias jenkins-lint="ssh jenkins-cli declarative-linter < ./Jenkinsfile"
+
+# export CXX=/usr/bin/g++
+# export CC=/usr/bin/cc

@@ -110,11 +110,17 @@
 
 (straight-use-package 'jenkinsfile-mode)
 
-(straight-use-package 'exec-path-from-shell)
+;;--------------------
+;;python stuff
+(setenv "PYTHONPATH" "/home/thisconnect/microservices/enhancement-ms/")
+;;(setenv "PYTHONPATH" "/home/thisconnect/scripting/common/")
 
-(when (daemonp)
-  (exec-path-from-shell))
+;; python autocomplete via jedi
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
 
+;;end pythonstuff
+;;--------------------
 (use-package elpy
   :ensure t
   :init
@@ -122,10 +128,6 @@
 
 ;; (straight-use-package 'org-tempo)
 
-;; python autocomplete via jedi
-
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
 
 ;; custom
 
@@ -258,7 +260,14 @@
 	("LOWPRIORITY" . "purple")
 	("VERIFY" . (:foreground "green" :weight bold))))
 
-
+;;add python keyword
+(setq python-font-lock-keywords-maximum-decoration
+      (append python-font-lock-keywords-maximum-decoration
+	      '(("f\\(['\"]\\{1,3\\}\\)\\(.+?\\)\\1"
+		 ("{[^}]*?}"
+		  (progn (goto-char (match-beginning 0)) (match-end 0))
+		  (goto-char (match-end 0))
+		              (0 font-lock-type-face t))))))
 ;; globally display numbers
 (global-linum-mode)
 ;; show lineendings everywhere

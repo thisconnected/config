@@ -1,0 +1,17 @@
+[user]
+	email = patryk.kaniewski.ext@nokia.com
+	name = Patryk Kaniewski
+[color]
+	ui = auto
+	lg = log --date=relative --pretty=tformat
+	graph = log --graph --decorate --oneline
+[core]
+	pager = delta
+[delta]
+	navigate = true
+	light = false
+	side-by-side = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
