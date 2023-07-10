@@ -180,3 +180,4 @@ alias jenkins-lint="ssh jenkins-cli declarative-linter < ./Jenkinsfile"
 
 # export CXX=/usr/bin/g++
 # export CC=/usr/bin/cc
+. "$HOME/.cargo/env"
