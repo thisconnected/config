@@ -3,7 +3,8 @@
 	name = Patryk Kaniewski
 [color]
 	ui = auto
-	lg = log --date=relative --pretty=tformat
+[alias]
+	lg = log --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
 	graph = log --graph --decorate --oneline
 [core]
 	pager = delta
