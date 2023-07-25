@@ -110,6 +110,8 @@
 
 (straight-use-package 'jenkinsfile-mode)
 
+(straight-use-package 'magit-delta)
+
 ;;--------------------
 ;;python stuff
 (setenv "PYTHONPATH" "/home/thisconnect/microservices/enhancement-ms/")
@@ -121,14 +123,12 @@
 
 ;;end pythonstuff
 ;;--------------------
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
+;; (use-package elpy
+;;   :ensure t
+;;   :init
+;;   (elpy-enable))
 
 ;; (straight-use-package 'org-tempo)
-
-
 
 ;;(setq default-directory "C:/Documents and Settings/Patryk Kaniewski/")
 
