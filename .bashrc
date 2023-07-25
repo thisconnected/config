@@ -174,7 +174,7 @@ shopt -s autocd
 shopt -s cdspell
 shopt -s direxpand
 shopt -s extglob
-alias config='/usr/bin/git --git-dir=/home/thisconnect/.cfg/ --work-tree=/home/thisconnect'
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias jenkins-lint="ssh jenkins-cli declarative-linter < ./Jenkinsfile"
 
