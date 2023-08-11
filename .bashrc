@@ -130,18 +130,20 @@ fi
 #custom aliases
 alias octave='octave --no-gui'
 alias objdump='objdump -M intel'
-if [ -z $TMUX ]; then
-    tmux attach;
-    if [ $? -eq 1 ]; then
-	source pkaniews-openrc.sh
-	tmux
+
+if [ "$EUID" -ne 0 ]; then
+    if [ -z $TMUX ]; then
+	tmux attach;
+	if [ $? -eq 1 ]; then
+	    source pkaniews-openrc.sh
+	    tmux
+	fi
     fi
 fi
 export EDITOR='emacsclient -t'
 export SUDO_EDITOR='emacsclient -t'
 export VISUAL='emacsclient -t -a emacs'
 alias mapvm='nmap -sn 192.168.122.0/24'
-alias pwsz='ssh pwsz@'
 alias emacs='emacsclient -c'
 export XZ_OPT="--threads=0"
 
@@ -178,6 +180,4 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias jenkins-lint="ssh jenkins-cli declarative-linter < ./Jenkinsfile"
 
-# export CXX=/usr/bin/g++
-# export CC=/usr/bin/cc
 . "$HOME/.cargo/env"
