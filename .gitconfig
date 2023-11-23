@@ -17,3 +17,8 @@
 	conflictstyle = diff3
 [diff]
 	colorMoved = default
+[safe]
+	directory = /var/www/enhancement-microservices
+	directory = /var/www/nsc
+[status]
+	showUntrackedFiles = no

@@ -115,7 +115,7 @@
 ;;--------------------
 ;;python stuff
 (setenv "PYTHONPATH" "/home/thisconnect/microservices/enhancement-ms/")
-;;(setenv "PYTHONPATH" "/home/thisconnect/scripting/common/")
+;; (setenv "PYTHONPATH" "/home/thisconnect/scripts/common/")
 
 ;; python autocomplete via jedi
 (add-hook 'python-mode-hook 'jedi:setup)

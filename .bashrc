@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-export BASH_USER_COLOR=7
+export BASH_USER_COLOR=2
 export BASH_PATH_COLOR=105
 export BASH_ROOT_COLOR=9
 
@@ -180,4 +180,17 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias jenkins-lint="ssh jenkins-cli declarative-linter < ./Jenkinsfile"
 
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
+#systemd aliases
+alias sct="sudo systemctl"
+alias user="systemctl --user"
+_completion_loader  systemctl
+complete -F _systemctl sct
+#
+if [ -f "$HOME/.secrets" ]; then
+    . "$HOME/.secrets"
+fi
+PYTHONPATH=/home/thisconnect/microservices/enhancement-ms/
+# PYTHONPATH=/home/thisconnect/scripts/common/
