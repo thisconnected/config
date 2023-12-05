@@ -112,10 +112,19 @@
 
 (straight-use-package 'magit-delta)
 
+(straight-use-package 'pyvenv-auto)
 ;;--------------------
 ;;python stuff
-(setenv "PYTHONPATH" "/home/thisconnect/microservices/enhancement-ms/")
-;; (setenv "PYTHONPATH" "/home/thisconnect/scripts/common/")
+(defun enable-scripting ()
+  "Enables scripting config for python."
+  (interactive)
+  (setenv "PYTHONPATH" "/home/thisconnect/microservices/enhancement-ms/"))
+(defun enable-microservices ()
+  "Enables microservices config for python."
+  (interactive)
+  (setenv "PYTHONPATH" "/var/www/enhancement-microservices/enhancement-ms/app/common"))
+(add-hook 'python-mode-hook 'pyvenv-auto-run)
+
 
 ;; python autocomplete via jedi
 (add-hook 'python-mode-hook 'jedi:setup)
@@ -265,13 +274,21 @@
 		  (goto-char (match-end 0))
 		              (0 font-lock-type-face t))))))
 ;; globally display numbers
-(global-linum-mode)
+(global-display-line-numbers-mode)
 ;; show lineendings everywhere
 ;; (global-whitespace-newline-mode)
 ;; show lineendings with custom sign
 (setq whitespace-display-mappings
       '((newline-mark 10 [172 10])))
 
+(defun kill-other-buffers ()
+  "Kill all buffer except current one."
+  (interactive)
+    (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
+
 (provide '.emacs)
 ;;; .emacs ends here
 (put 'upcase-region 'disabled nil)
+
+
+

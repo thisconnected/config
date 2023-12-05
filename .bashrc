@@ -192,5 +192,23 @@ complete -F _systemctl sct
 if [ -f "$HOME/.secrets" ]; then
     . "$HOME/.secrets"
 fi
-PYTHONPATH=/home/thisconnect/microservices/enhancement-ms/
-# PYTHONPATH=/home/thisconnect/scripts/common/
+
+scripting()
+{
+    cd $HOME/scripting
+    source venv/bin/activate
+    export PYTHONPATH=/scripts/common
+    echo echo PYTHONPATH=$PYTHONPATH
+}
+
+microservices()
+{
+    cd $HOME/microservices
+    source venv/bin/activate
+    export PYTHONPATH=/var/www/enhancement-microservices/enhancement-ms/app/common
+    echo echo PYTHONPATH=$PYTHONPATH
+}
+if [ -f "/usr/bin/boundary" ]; then
+    complete -C /usr/bin/boundary boundary
+fi
+
