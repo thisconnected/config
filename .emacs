@@ -102,7 +102,7 @@
 
 (straight-use-package 'ispell)
 
-(straight-use-package 'jedi)
+;; (straight-use-package 'jedi)
 
 (straight-use-package 'pyvenv)
 
@@ -113,6 +113,12 @@
 (straight-use-package 'magit-delta)
 
 (straight-use-package 'pyvenv-auto)
+
+(straight-use-package 'lsp-mode)
+
+(add-hook 'prog-mode-hook #'lsp)
+
+(straight-use-package 'lsp-jedi)
 ;;--------------------
 ;;python stuff
 (defun enable-scripting ()
@@ -125,10 +131,13 @@
   (setenv "PYTHONPATH" "/var/www/enhancement-microservices/enhancement-ms/app/common"))
 (add-hook 'python-mode-hook 'pyvenv-auto-run)
 
+;; (setq lsp-jedi-workspace-extra-paths
+;;   (vconcat lsp-jedi-workspace-extra-paths
+;;            ["/home/thisconnect/microservices/enhancment-ms/app/common"]))
 
 ;; python autocomplete via jedi
-(add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)
+;; (add-hook 'python-mode-hook 'jedi:setup)
+;; (setq jedi:complete-on-dot t)
 
 ;;end pythonstuff
 ;;--------------------
@@ -262,6 +271,7 @@
 	("TODO" . "orange")
 	("ONGOING" . "cyan")
 	("WAITING" . "white")
+	("ONHOLD" . "orange")
 	("LOWPRIORITY" . "purple")
 	("VERIFY" . (:foreground "green" :weight bold))))
 

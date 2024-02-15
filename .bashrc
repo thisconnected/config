@@ -212,3 +212,8 @@ if [ -f "/usr/bin/boundary" ]; then
     complete -C /usr/bin/boundary boundary
 fi
 
+MANGOHUD_CONFIGFILE=$HOME/MangoHud/MangoHud.conf
+
+export NVM_DIR="/home/thisconnect/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
