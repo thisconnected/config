@@ -112,8 +112,6 @@
 
 (straight-use-package 'magit-delta)
 
-(straight-use-package 'pyvenv-auto)
-
 (straight-use-package 'lsp-mode)
 
 (add-hook 'prog-mode-hook #'lsp)
@@ -129,7 +127,6 @@
   "Enables microservices config for python."
   (interactive)
   (setenv "PYTHONPATH" "/var/www/enhancement-microservices/enhancement-ms/app/common"))
-(add-hook 'python-mode-hook 'pyvenv-auto-run)
 
 ;; (setq lsp-jedi-workspace-extra-paths
 ;;   (vconcat lsp-jedi-workspace-extra-paths
