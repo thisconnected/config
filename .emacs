@@ -128,6 +128,7 @@
   (interactive)
   (setenv "PYTHONPATH" "/var/www/enhancement-microservices/enhancement-ms/app/common"))
 
+(set-variable 'lsp-pyls-plugins-flake8-config "/home/thisconnect/.flake8")
 ;; (setq lsp-jedi-workspace-extra-paths
 ;;   (vconcat lsp-jedi-workspace-extra-paths
 ;;            ["/home/thisconnect/microservices/enhancment-ms/app/common"]))
@@ -268,7 +269,6 @@
 	("TODO" . "orange")
 	("ONGOING" . "cyan")
 	("WAITING" . "white")
-	("ONHOLD" . "orange")
 	("LOWPRIORITY" . "purple")
 	("VERIFY" . (:foreground "green" :weight bold))))
 
@@ -293,9 +293,9 @@
   (interactive)
     (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
 
+(put 'upcase-region 'disabled nil)
+(add-to-list 'exec-path "/home/thisconnect/.local/bin")
 (provide '.emacs)
 ;;; .emacs ends here
-(put 'upcase-region 'disabled nil)
-
 
 

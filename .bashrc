@@ -138,6 +138,8 @@ if [ "$EUID" -ne 0 ]; then
 	    source pkaniews-openrc.sh
 	    tmux
 	fi
+    else
+	cat /etc/motd
     fi
 fi
 export EDITOR='emacsclient -t'
