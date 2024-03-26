@@ -117,6 +117,12 @@
 (add-hook 'prog-mode-hook #'lsp)
 
 (straight-use-package 'lsp-jedi)
+
+(straight-use-package 'exec-path-from-shell)
+
+(when (daemonp)
+  (exec-path-from-shell-initialize))
+
 ;;--------------------
 ;;python stuff
 (defun enable-scripting ()
@@ -128,7 +134,7 @@
   (interactive)
   (setenv "PYTHONPATH" "/var/www/enhancement-microservices/enhancement-ms/app/common"))
 
-(set-variable 'lsp-pyls-plugins-flake8-config "/home/thisconnect/.flake8")
+(set-variable 'lsp-pyls-plugins-flake8-config "/home/thisconnect/microservices/.flake8")
 ;; (setq lsp-jedi-workspace-extra-paths
 ;;   (vconcat lsp-jedi-workspace-extra-paths
 ;;            ["/home/thisconnect/microservices/enhancment-ms/app/common"]))
