@@ -57,7 +57,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-export BASH_USER_COLOR=2
+export BASH_USER_COLOR=224
 export BASH_PATH_COLOR=105
 export BASH_ROOT_COLOR=9
 
@@ -139,7 +139,9 @@ if [ "$EUID" -ne 0 ]; then
 	    tmux
 	fi
     else
-	cat /etc/motd
+	if [ -f /etc/motd ]; then
+	    cat /etc/motd
+	fi
     fi
 fi
 export EDITOR='emacsclient -t'
@@ -219,3 +221,8 @@ MANGOHUD_CONFIGFILE=$HOME/MangoHud/MangoHud.conf
 export NVM_DIR="/home/thisconnect/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+colors()
+{
+    for i in {0..255}; do printf '\e[38;5;%dm%3d ' $i $i; (((i+3) % 18)) || printf '\e[0m\n'; done
+}
