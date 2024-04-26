@@ -226,3 +226,36 @@ colors()
 {
     for i in {0..255}; do printf '\e[38;5;%dm%3d ' $i $i; (((i+3) % 18)) || printf '\e[0m\n'; done
 }
+
+
+ssh() {
+  #https://gist.github.com/nevesnunes/951f77085116a9beea62c9610dda31e8
+  # grep -w: match command names such as "tmux-2.1" or "tmux: server"
+    if ps -p $$ -o ppid= \
+    | xargs -i ps -p {} -o comm= \
+    | grep -qw tmux; then
+    # Note: Options without parameter were hardcoded,
+    # in order to distinguish an option's parameter from the destination.
+    #
+    #                   s/[[:space:]]*\(\( | spaces before options
+    #     \(-[46AaCfGgKkMNnqsTtVvXxYy]\)\| | option without parameter
+    #                     \(-[^[:space:]]* | option
+    # \([[:space:]]\+[^[:space:]]*\)\?\)\) | parameter
+    #                      [[:space:]]*\)* | spaces between options
+    #                        [[:space:]]\+ | spaces before destination
+    #                \([^-][^[:space:]]*\) | destination
+    #                                   .* | command
+    #                                 /\6/ | replace with destination
+	# tmux set-window-option window-status-current-style bg=white
+	# tmux set-window-option window-status-current-style fg=black
+	tmux rename-window "ssh@$(echo "$@" \
+        | sed 's/[[:space:]]*\(\(\(-[46AaCfGgKkMNnqsTtVvXxYy]\)\|\(-[^[:space:]]*\([[:space:]]\+[^[:space:]]*\)\?\)\)[[:space:]]*\)*[[:space:]]\+\([^-][^[:space:]]*\).*/\6/' | sed 's/enhancement-//g' | sed 's/nesc-//g' )"
+	# fix handling those characters
+	command ssh "$@"
+	tmux set-window-option automatic-rename "on" 1> /dev/null
+	# tmux set-window-option window-status-current-style bg=black
+	# tmux set-window-option window-status-current-style fg=white
+    else
+	command ssh "$@"
+    fi
+}
