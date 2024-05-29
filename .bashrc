@@ -201,7 +201,7 @@ scripting()
 {
     cd $HOME/scripting
     source venv/bin/activate
-    export PYTHONPATH=/scripts/common
+    export PYTHONPATH=/home/thisconnect/scripting/common
     echo echo PYTHONPATH=$PYTHONPATH
 }
 
