@@ -118,6 +118,7 @@
 
 (straight-use-package 'lsp-jedi)
 
+
 (straight-use-package 'exec-path-from-shell)
 
 (when (daemonp)
@@ -134,7 +135,7 @@
   (interactive)
   (setenv "PYTHONPATH" "/var/www/enhancement-microservices/enhancement-ms/app/common"))
 
-(set-variable 'lsp-pyls-plugins-flake8-config "/home/thisconnect/microservices/.flake8")
+(add-hook 'python-mode-hook "setq 'lsp-pylsp-plugins-flake8-config \"/home/thisconnect/microservices/.flake8\"")
 ;; (setq lsp-jedi-workspace-extra-paths
 ;;   (vconcat lsp-jedi-workspace-extra-paths
 ;;            ["/home/thisconnect/microservices/enhancment-ms/app/common"]))
@@ -269,14 +270,16 @@
  )
 
 (setq org-todo-keywords
-      '((sequence "TODO" "WAITING" "LOWPRIORITY" "ONGOING" "PENDING" "VERIFY" "DONE" )))
+      '((sequence "TODO" "WAITING" "LOWPRIORITY" "ONGOING" "PENDING" "VERIFY" "BLOCKED" "DONE" )))
 (setq org-todo-keyword-faces
       '(("PENDING" . org-warning)
 	("TODO" . "orange")
 	("ONGOING" . "cyan")
 	("WAITING" . "white")
 	("LOWPRIORITY" . "purple")
-	("VERIFY" . (:foreground "green" :weight bold))))
+	("VERIFY" . (:foreground "green" :weight bold))
+	("BLOCKED" . (:foreground "white" :weight bold))
+	))
 
 ;;add python keyword
 (setq python-font-lock-keywords-maximum-decoration
